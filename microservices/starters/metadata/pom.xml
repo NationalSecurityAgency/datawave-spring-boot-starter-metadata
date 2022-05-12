@@ -5,7 +5,7 @@
         <groupId>gov.nsa.datawave.microservice</groupId>
         <artifactId>datawave-microservice-service-parent</artifactId>
         <version>2.1-SNAPSHOT</version>
-        <relativePath />
+        <relativePath>../../microservice-service-parent/pom.xml</relativePath>
     </parent>
     <artifactId>spring-boot-starter-datawave-metadata</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -16,7 +16,7 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>gov.nsa.datawave.contrib</groupId>
+                <groupId>gov.nsa.datawave</groupId>
                 <artifactId>datawave-in-memory-accumulo</artifactId>
                 <version>${version.in-memory-accumulo}</version>
                 <scope>compile</scope>
@@ -29,13 +29,8 @@
                 </exclusions>
             </dependency>
             <dependency>
-                <groupId>gov.nsa.datawave.microservice</groupId>
-                <artifactId>spring-boot-starter-datawave</artifactId>
-                <version>${version.microservice.starter}</version>
-            </dependency>
-            <dependency>
-                <groupId>gov.nsa.datawave.services</groupId>
-                <artifactId>datawave-services-connection-pool</artifactId>
+                <groupId>gov.nsa.datawave.core</groupId>
+                <artifactId>datawave-core-connection-pool</artifactId>
                 <version>${version.datawave}</version>
                 <exclusions>
                     <!-- Exclude log4j since with spring boot we're using log4j2 -->
@@ -53,6 +48,11 @@
                 <groupId>gov.nsa.datawave.microservice</groupId>
                 <artifactId>spring-boot-starter-datawave</artifactId>
                 <version>${version.microservice.starter}</version>
+            </dependency>
+            <dependency>
+                <groupId>gov.nsa.datawave.microservice</groupId>
+                <artifactId>spring-boot-starter-datawave</artifactId>
+                <version>${version.microservice.starter}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -60,8 +60,14 @@
     </dependencyManagement>
     <dependencies>
         <dependency>
-            <groupId>gov.nsa.datawave.contrib</groupId>
+            <groupId>gov.nsa.datawave</groupId>
             <artifactId>datawave-in-memory-accumulo</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>gov.nsa.datawave.core</groupId>
+            <artifactId>datawave-core-connection-pool</artifactId>
+            <version>3.21.0-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>gov.nsa.datawave.microservice</groupId>
@@ -74,12 +80,6 @@
         <dependency>
             <groupId>gov.nsa.datawave.microservice</groupId>
             <artifactId>spring-boot-starter-datawave-cache</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>gov.nsa.datawave.services</groupId>
-            <artifactId>datawave-services-connection-pool</artifactId>
-            <version>3.21.0-SNAPSHOT</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>junit</groupId>

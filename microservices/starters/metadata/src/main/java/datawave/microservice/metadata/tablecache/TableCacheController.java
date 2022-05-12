@@ -53,7 +53,7 @@ public class TableCacheController {
      * @RequestHeader query-session-id session id value used for load balancing purposes. query-session-id can be placed in the request in a Cookie header or as
      *                a query parameter
      * @ResponseHeader X-OperationTimeInMS time spent on the server performing the operation, does not account for network or result serialization
-     *
+     *                
      * @HTTP 200 success
      */
     @Timed(name = "dw.table.cache.getStatus", absolute = true)
