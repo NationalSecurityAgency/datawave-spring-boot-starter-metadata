@@ -3,6 +3,9 @@ package datawave.microservice.metadata.tablecache;
 import com.codahale.metrics.annotation.Timed;
 import datawave.services.common.result.AccumuloTableCacheStatus;
 import datawave.webservice.result.VoidResponse;
+import io.swagger.v3.oas.annotations.ExternalDocumentation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.log4j.Logger;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.MediaType;
@@ -12,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+@Tag(name = "Table Cache Controller /v1", description = "DataWave Table Cache Operations",
+                externalDocs = @ExternalDocumentation(description = "Query Executor Service Documentation",
+                                url = "https://github.com/NationalSecurityAgency/datawave-query-executor-service"))
 @RestController
 @RequestMapping(path = "/v1/AccumuloTableCache", produces = MediaType.APPLICATION_JSON_VALUE)
 @ConditionalOnProperty(name = "datawave.table.cache.enabled", havingValue = "true", matchIfMissing = true)
@@ -26,12 +32,13 @@ public class TableCacheController {
     /**
      * <strong>JBossAdministrator or Administrator credentials required.</strong> Force a reload the table cache for the specified table.
      *
-     * @return datawave.webservice.result.VoidResponse
+     * @return a VoidResponse
      * @RequestHeader X-ProxiedEntitiesChain use when proxying request for user
      * @RequestHeader X-ProxiedIssuersChain required when using X-ProxiedEntitiesChain, specify one issuer DN per subject DN listed in X-ProxiedEntitiesChain
      * @HTTP 200 success
      * @HTTP 500 internal server error
      */
+    @Operation(summary = "Force a reload the table cache for the specified table.")
     @Timed(name = "dw.table.cache.reloadCache", absolute = true)
     @Secured({"AuthorizedUser", "AuthorizedQueryServer", "AuthorizedServer", "InternalUser", "Administrator", "JBossAdministrator"})
     @RequestMapping(path = "/reload/{tableName}", method = {RequestMethod.GET},
@@ -47,7 +54,7 @@ public class TableCacheController {
     /**
      * <strong>JBossAdministrator or Administrator credentials required.</strong> Get the status of the table caches
      *
-     * @return datawave.webservice.common.result.AccumuloTableCacheStatus
+     * @return the AccumuloTableCacheStatus
      * @RequestHeader X-ProxiedEntitiesChain use when proxying request for user
      * @RequestHeader X-ProxiedIssuersChain required when using X-ProxiedEntitiesChain, specify one issuer DN per subject DN listed in X-ProxiedEntitiesChain
      * @RequestHeader query-session-id session id value used for load balancing purposes. query-session-id can be placed in the request in a Cookie header or as
@@ -56,6 +63,7 @@ public class TableCacheController {
      *                
      * @HTTP 200 success
      */
+    @Operation(summary = "Get the status of the table caches.")
     @Timed(name = "dw.table.cache.getStatus", absolute = true)
     @Secured({"AuthorizedUser", "AuthorizedQueryServer", "AuthorizedServer", "InternalUser", "Administrator", "JBossAdministrator"})
     @RequestMapping(path = "/", method = {RequestMethod.GET},
