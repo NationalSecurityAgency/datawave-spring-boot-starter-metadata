@@ -1,9 +1,9 @@
 package datawave.microservice.metadata.config;
 
+import datawave.core.common.cache.AccumuloTableCache;
+import datawave.core.common.cache.AccumuloTableCacheImpl;
+import datawave.core.common.cache.AccumuloTableCacheProperties;
 import datawave.microservice.metadata.tablecache.task.TableCacheReloadMonitor;
-import datawave.services.common.cache.AccumuloTableCache;
-import datawave.services.common.cache.AccumuloTableCacheImpl;
-import datawave.services.common.cache.AccumuloTableCacheProperties;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;

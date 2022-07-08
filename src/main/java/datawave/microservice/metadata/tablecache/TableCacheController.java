@@ -1,7 +1,7 @@
 package datawave.microservice.metadata.tablecache;
 
 import com.codahale.metrics.annotation.Timed;
-import datawave.services.common.result.AccumuloTableCacheStatus;
+import datawave.core.common.result.AccumuloTableCacheStatus;
 import datawave.webservice.result.VoidResponse;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.Operation;

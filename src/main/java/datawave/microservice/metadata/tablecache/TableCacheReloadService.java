@@ -1,7 +1,7 @@
 package datawave.microservice.metadata.tablecache;
 
+import datawave.core.common.cache.AccumuloTableCache;
 import datawave.microservice.metadata.remote.TableCacheReloadRequestHandler;
-import datawave.services.common.cache.AccumuloTableCache;
 import org.apache.log4j.Logger;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.cloud.bus.BusProperties;

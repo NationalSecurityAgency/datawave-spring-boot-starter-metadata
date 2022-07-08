@@ -1,7 +1,7 @@
 package datawave.microservice.metadata.tablecache.task;
 
-import datawave.services.common.cache.AccumuloTableCache;
-import datawave.services.common.cache.AccumuloTableCacheProperties;
+import datawave.core.common.cache.AccumuloTableCache;
+import datawave.core.common.cache.AccumuloTableCacheProperties;
 import org.apache.log4j.Logger;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.scheduling.annotation.Scheduled;
