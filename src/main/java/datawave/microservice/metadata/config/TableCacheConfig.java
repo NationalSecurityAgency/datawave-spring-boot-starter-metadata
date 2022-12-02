@@ -13,26 +13,24 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @Configuration
 @EnableScheduling
+@ConditionalOnProperty(name = "datawave.table.cache.enabled", havingValue = "true", matchIfMissing = true)
 public class TableCacheConfig {
     
     @Bean
     @ConfigurationProperties("datawave.table.cache")
     @ConditionalOnMissingBean(AccumuloTableCacheProperties.class)
-    @ConditionalOnProperty(name = "datawave.table.cache.enabled", havingValue = "true", matchIfMissing = true)
     public AccumuloTableCacheProperties tableCacheConfiguration() {
         return new AccumuloTableCacheProperties();
     }
     
     @Bean
     @ConditionalOnMissingBean(AccumuloTableCache.class)
-    @ConditionalOnProperty(name = "datawave.table.cache.enabled", havingValue = "true", matchIfMissing = true)
     public AccumuloTableCache tableCache(AccumuloTableCacheProperties accumuloTableCacheProperties) {
         return new AccumuloTableCacheImpl(accumuloTableCacheProperties);
     }
     
     @Bean
     @ConditionalOnMissingBean(TableCacheReloadMonitor.class)
-    @ConditionalOnProperty(name = "datawave.table.cache.enabled", havingValue = "true", matchIfMissing = true)
     public TableCacheReloadMonitor tableCacheMonitor(AccumuloTableCache cache, AccumuloTableCacheProperties properties) {
         return new TableCacheReloadMonitor(cache, properties);
     }

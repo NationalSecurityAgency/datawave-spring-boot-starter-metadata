@@ -33,7 +33,6 @@
                 <groupId>gov.nsa.datawave</groupId>
                 <artifactId>datawave-in-memory-accumulo</artifactId>
                 <version>${version.in-memory-accumulo}</version>
-                <scope>compile</scope>
                 <exclusions>
                     <!-- Exclude all dependencies of in-memory-accumulo. We'll pull in the exact version we need. -->
                     <exclusion>
