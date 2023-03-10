@@ -7,7 +7,7 @@ import datawave.query.util.MetadataCacheManager;
 import datawave.query.util.MetadataHelper;
 import datawave.query.util.MetadataHelperFactory;
 import datawave.query.util.TypeMetadataHelper;
-import org.apache.accumulo.core.client.Connector;
+import org.apache.accumulo.core.client.AccumuloClient;
 import org.apache.accumulo.core.security.Authorizations;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -57,32 +57,32 @@ public class MetadataHelperConfiguration {
     @Scope("prototype")
     @ConditionalOnMissingBean
     public MetadataHelper metadataHelper(AllFieldMetadataHelper allFieldMetadataHelper, @Qualifier("allMetadataAuths") Set<Authorizations> allMetadataAuths,
-                    Connector connector, String metadataTableName, Set<Authorizations> auths, Set<Authorizations> fullUserAuths) {
-        return new MetadataHelper(allFieldMetadataHelper, allMetadataAuths, connector, metadataTableName, auths, fullUserAuths);
+                    AccumuloClient accumuloClient, String metadataTableName, Set<Authorizations> auths, Set<Authorizations> fullUserAuths) {
+        return new MetadataHelper(allFieldMetadataHelper, allMetadataAuths, accumuloClient, metadataTableName, auths, fullUserAuths);
     }
     
     @Bean
     @Scope("prototype")
     @ConditionalOnMissingBean
     public AllFieldMetadataHelper allFieldMetadataHelper(TypeMetadataHelper typeMetadataHelper, CompositeMetadataHelper compositeMetadataHelper,
-                    Connector connector, String metadataTableName, Set<Authorizations> auths, Set<Authorizations> fullUserAuths) {
-        return new AllFieldMetadataHelper(typeMetadataHelper, compositeMetadataHelper, connector, metadataTableName, auths, fullUserAuths);
+                    AccumuloClient accumuloClient, String metadataTableName, Set<Authorizations> auths, Set<Authorizations> fullUserAuths) {
+        return new AllFieldMetadataHelper(typeMetadataHelper, compositeMetadataHelper, accumuloClient, metadataTableName, auths, fullUserAuths);
     }
     
     @Bean
     @Scope("prototype")
     @ConditionalOnMissingBean
-    public CompositeMetadataHelper compositeMetadataHelper(Connector connector, String metadataTableName, Set<Authorizations> auths) {
-        return new CompositeMetadataHelper(connector, metadataTableName, auths);
+    public CompositeMetadataHelper compositeMetadataHelper(AccumuloClient accumuloClient, String metadataTableName, Set<Authorizations> auths) {
+        return new CompositeMetadataHelper(accumuloClient, metadataTableName, auths);
     }
     
     @Bean
     @Scope("prototype")
     @ConditionalOnMissingBean
     public TypeMetadataHelper typeMetadataHelper(@Qualifier("typeSubstitutions") Map<String,String> typeSubstitutions,
-                    @Qualifier("allMetadataAuths") Set<Authorizations> allMetadataAuths, Connector connector, String metadataTableName,
+                    @Qualifier("allMetadataAuths") Set<Authorizations> allMetadataAuths, AccumuloClient accumuloClient, String metadataTableName,
                     Set<Authorizations> auths, boolean useTypeSubstitution) {
-        return new TypeMetadataHelper(typeSubstitutions, allMetadataAuths, connector, metadataTableName, auths, useTypeSubstitution);
+        return new TypeMetadataHelper(typeSubstitutions, allMetadataAuths, accumuloClient, metadataTableName, auths, useTypeSubstitution);
     }
     
     @Bean(name = "typeSubstitutions")
