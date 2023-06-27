@@ -1,12 +1,8 @@
 package datawave.microservice.metadata.config;
 
-import com.github.benmanes.caffeine.cache.CaffeineSpec;
-import datawave.query.composite.CompositeMetadataHelper;
-import datawave.query.util.AllFieldMetadataHelper;
-import datawave.query.util.MetadataCacheManager;
-import datawave.query.util.MetadataHelper;
-import datawave.query.util.MetadataHelperFactory;
-import datawave.query.util.TypeMetadataHelper;
+import java.util.Map;
+import java.util.Set;
+
 import org.apache.accumulo.core.client.AccumuloClient;
 import org.apache.accumulo.core.security.Authorizations;
 import org.springframework.beans.factory.BeanFactory;
@@ -22,8 +18,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
-import java.util.Map;
-import java.util.Set;
+import com.github.benmanes.caffeine.cache.CaffeineSpec;
+
+import datawave.query.composite.CompositeMetadataHelper;
+import datawave.query.util.AllFieldMetadataHelper;
+import datawave.query.util.MetadataCacheManager;
+import datawave.query.util.MetadataHelper;
+import datawave.query.util.MetadataHelperFactory;
+import datawave.query.util.TypeMetadataHelper;
 
 @EnableCaching
 @Configuration

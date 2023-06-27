@@ -1,15 +1,16 @@
 package datawave.microservice.metadata.config;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 import org.apache.accumulo.core.security.Authorizations;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.validation.annotation.Validated;
-
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
 
 @Validated
 @ConfigurationProperties(prefix = "datawave.metadata")
