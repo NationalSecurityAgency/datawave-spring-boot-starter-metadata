@@ -1,11 +1,5 @@
 package datawave.microservice.metadata.tablecache;
 
-import com.codahale.metrics.annotation.Timed;
-import datawave.core.common.result.AccumuloTableCacheStatus;
-import datawave.webservice.result.VoidResponse;
-import io.swagger.v3.oas.annotations.ExternalDocumentation;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.log4j.Logger;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.MediaType;
@@ -14,6 +8,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.codahale.metrics.annotation.Timed;
+
+import datawave.core.common.result.AccumuloTableCacheStatus;
+import datawave.webservice.result.VoidResponse;
+import io.swagger.v3.oas.annotations.ExternalDocumentation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 @Tag(name = "Table Cache Controller /v1", description = "DataWave Table Cache Operations",
                 externalDocs = @ExternalDocumentation(description = "Query Executor Service Documentation",

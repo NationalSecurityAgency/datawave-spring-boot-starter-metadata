@@ -1,13 +1,14 @@
 package datawave.microservice.metadata.tablecache;
 
-import datawave.core.common.cache.AccumuloTableCache;
-import datawave.microservice.metadata.remote.TableCacheReloadRequestHandler;
 import org.apache.log4j.Logger;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.cloud.bus.BusProperties;
 import org.springframework.cloud.bus.event.TableCacheReloadRequestEvent;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
+
+import datawave.core.common.cache.AccumuloTableCache;
+import datawave.microservice.metadata.remote.TableCacheReloadRequestHandler;
 
 @Service
 @ConditionalOnProperty(name = "datawave.table.cache.enabled", havingValue = "true", matchIfMissing = true)

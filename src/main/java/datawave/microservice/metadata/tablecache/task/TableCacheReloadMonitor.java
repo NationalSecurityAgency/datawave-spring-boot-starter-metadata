@@ -1,17 +1,18 @@
 package datawave.microservice.metadata.tablecache.task;
 
-import datawave.core.common.cache.AccumuloTableCache;
-import datawave.core.common.cache.AccumuloTableCacheProperties;
-import org.apache.log4j.Logger;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
-
 import java.util.concurrent.Callable;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+
+import org.apache.log4j.Logger;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+
+import datawave.core.common.cache.AccumuloTableCache;
+import datawave.core.common.cache.AccumuloTableCacheProperties;
 
 @Component
 @ConditionalOnProperty(name = "datawave.table.cache.enabled", havingValue = "true", matchIfMissing = true)
