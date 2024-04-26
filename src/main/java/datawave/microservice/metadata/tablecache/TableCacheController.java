@@ -40,7 +40,7 @@ public class TableCacheController {
      * @HTTP 200 success
      * @HTTP 500 internal server error
      */
-    @Operation(summary = "Force a reload the table cache for the specified table.")
+    @Operation(summary = "Force a reload of the table cache for the specified table.")
     @Timed(name = "dw.table.cache.reloadCache", absolute = true)
     @Secured({"AuthorizedUser", "AuthorizedQueryServer", "AuthorizedServer", "InternalUser", "Administrator", "JBossAdministrator"})
     @RequestMapping(path = "/reload/{tableName}", method = {RequestMethod.GET},
