@@ -18,8 +18,8 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @Tag(name = "Table Cache Controller /v1", description = "DataWave Table Cache Operations",
-                externalDocs = @ExternalDocumentation(description = "Query Executor Service Documentation",
-                                url = "https://github.com/NationalSecurityAgency/datawave-query-executor-service"))
+                externalDocs = @ExternalDocumentation(description = "Spring Boot Starter Datawave Metadata Documentation",
+                                url = "https://github.com/NationalSecurityAgency/datawave-spring-boot-starter-metadata"))
 @RestController
 @RequestMapping(path = "/v1/AccumuloTableCache", produces = MediaType.APPLICATION_JSON_VALUE)
 @ConditionalOnProperty(name = "datawave.table.cache.enabled", havingValue = "true", matchIfMissing = true)
