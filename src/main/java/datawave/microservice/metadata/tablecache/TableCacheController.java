@@ -32,7 +32,7 @@ public class TableCacheController {
     }
     
     /**
-     * <strong>JBossAdministrator or Administrator credentials required.</strong> Force a reload the table cache for the specified table.
+     * Force a reload the table cache for the specified table.
      *
      * @return a VoidResponse
      * @RequestHeader X-ProxiedEntitiesChain use when proxying request for user
@@ -54,7 +54,7 @@ public class TableCacheController {
     }
     
     /**
-     * <strong>JBossAdministrator or Administrator credentials required.</strong> Get the status of the table caches
+     * Get the status of the table caches
      *
      * @return the AccumuloTableCacheStatus
      * @RequestHeader X-ProxiedEntitiesChain use when proxying request for user
