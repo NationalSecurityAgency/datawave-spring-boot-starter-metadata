@@ -4,11 +4,11 @@
     <parent>
         <groupId>gov.nsa.datawave.microservice</groupId>
         <artifactId>datawave-microservice-service-parent</artifactId>
-        <version>4.0.5-SNAPSHOT</version>
+        <version>5.0.1-SNAPSHOT</version>
         <relativePath>../../microservice-service-parent/pom.xml</relativePath>
     </parent>
     <artifactId>spring-boot-starter-datawave-metadata</artifactId>
-    <version>2.0.1-SNAPSHOT</version>
+    <version>3.0.1-SNAPSHOT</version>
     <url>https://github.com/NationalSecurityAgency/datawave-spring-boot-starter-metadata</url>
     <licenses>
         <license>
@@ -23,8 +23,9 @@
         <url>https://github.com/NationalSecurityAgency/datawave-spring-boot-starter-metadata</url>
     </scm>
     <properties>
-        <version.in-memory-accumulo>3.0.1</version.in-memory-accumulo>
-        <version.microservice.starter>3.0.1-SNAPSHOT</version.microservice.starter>
+        <version.datawave>7.0.0</version.datawave>
+        <version.in-memory-accumulo>4.0.0</version.in-memory-accumulo>
+        <version.microservice.starter>4.0.1-SNAPSHOT</version.microservice.starter>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -37,6 +38,22 @@
                     <exclusion>
                         <artifactId>*</artifactId>
                         <groupId>*</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>gov.nsa.datawave.core</groupId>
+                <artifactId>datawave-core-connection-pool</artifactId>
+                <version>${version.datawave}</version>
+                <exclusions>
+                    <!-- Exclude log4j since with spring boot we're using log4j2 -->
+                    <exclusion>
+                        <artifactId>log4j</artifactId>
+                        <groupId>log4j</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>slf4j-reload4j</artifactId>
+                        <groupId>org.slf4j</groupId>
                     </exclusion>
                 </exclusions>
             </dependency>
@@ -58,6 +75,10 @@
         <dependency>
             <groupId>gov.nsa.datawave</groupId>
             <artifactId>datawave-in-memory-accumulo</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>gov.nsa.datawave.core</groupId>
+            <artifactId>datawave-core-connection-pool</artifactId>
         </dependency>
         <dependency>
             <groupId>gov.nsa.datawave.microservice</groupId>
