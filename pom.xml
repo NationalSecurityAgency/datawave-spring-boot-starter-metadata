@@ -25,7 +25,7 @@
     <properties>
         <version.datawave>7.7.0-SNAPSHOT</version.datawave>
         <version.in-memory-accumulo>4.0.0</version.in-memory-accumulo>
-        <version.microservice.starter>4.0.3-SNAPSHOT</version.microservice.starter>
+        <version.microservice.starter>4.0.4-SNAPSHOT</version.microservice.starter>
     </properties>
     <dependencyManagement>
         <dependencies>
